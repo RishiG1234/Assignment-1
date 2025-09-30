@@ -19,7 +19,7 @@ public class SolarSystem : MonoBehaviour
         public GameObject obj;
         public float radius;      // scaled orbit radius
         public float angle;       // current angle in radians
-        public float speed;       // angular speed (rad/s)
+        public float speed;       
     }
 
     private readonly List<Body> bodies = new List<Body>();
@@ -53,10 +53,8 @@ public class SolarSystem : MonoBehaviour
         {
             BodyProperty bp = dataCSV.bp[i];
 
-            // Scale the distance into Unity range
             float radius = bp.distance * DIST_SCALE;
 
-            // Orbital period T^2 ∝ a^3 → ω = sqrt(GM / r^3)
             float speed = Mathf.Sqrt(GM / radius) * TIME_SCALE;
 
             GameObject planet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
